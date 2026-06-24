@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cscene0000001"]
+
+[ext_resource type="Script" path="res://source/gameplay/construction/construction_scene.gd" id="1_csc01"]
+[ext_resource type="Script" path="res://source/gameplay/construction/construction_manager.gd" id="2_cmgr0"]
+
+[node name="ConstructionScene" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_csc01")
+
+[node name="ConstructionManager" type="Node" parent="."]
+script = ExtResource("2_cmgr0")
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+offset_bottom = 40.0
+
+[node name="SaveButton" type="Button" parent="Toolbar"]
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="Toolbar"]
+text = "Load"
+
+[node name="ExportButton" type="Button" parent="Toolbar"]
+text = "Export"
+
+[node name="PlayButton" type="Button" parent="Toolbar"]
+text = "Play"
+
+[node name="Palette" type="VBoxContainer" parent="."]
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 460.0
+
+[node name="TableArea" type="SubViewportContainer" parent="."]
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 920.0
+offset_bottom = 460.0
+
+[node name="TableViewport" type="SubViewport" parent="TableArea"]
+handle_input_locally = false
+size = Vector2i(800, 420)
+physics_object_picking = true
+
+[node name="PlacedElements" type="Node2D" parent="TableArea/TableViewport"]
+
+[connection signal="pressed" from="Toolbar/SaveButton" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Toolbar/LoadButton" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Toolbar/ExportButton" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="Toolbar/PlayButton" to="." method="_on_play_pressed"]

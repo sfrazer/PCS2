@@ -352,7 +352,7 @@ Create placeholder `.tscn` files for all 12 scene paths. Each placeholder is a s
 
 ## Task 5 — Construction Scene Layout
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Build the construction scene's visual structure and wire button signals to stub handlers.
 
@@ -390,7 +390,7 @@ In `construction_scene.gd`:
 
 ## Task 6 — ConstructionManager
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement all construction mode mouse interaction. At the end of this task, elements can be placed, moved, rotated, and deleted, and TableData stays in sync.
 
