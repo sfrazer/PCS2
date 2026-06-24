@@ -1,0 +1,3 @@
+[gd_scene load_steps=1 format=3 uid="uid://pb1play0000001"]
+
+[node name="PopBumperPlay" type="Node2D"]
