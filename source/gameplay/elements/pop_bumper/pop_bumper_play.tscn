@@ -23,6 +23,8 @@ shape = SubResource("1_body")
 texture = SubResource("2_phld1")
 
 [node name="ContactArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]
 shape = SubResource("3_contact")

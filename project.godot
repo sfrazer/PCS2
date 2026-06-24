@@ -29,9 +29,11 @@ gdscript/warnings/untyped_declaration=1
 
 window/size/viewport_width=800
 window/size/viewport_height=800
-window/stretch/mode="canvas_items"
 window/size/minimum_width=760
 window/size/minimum_height=760
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/stretch/scale_mode="fractional"
 
 [editor_plugins]
 
@@ -68,3 +70,5 @@ launch={
 [physics]
 
 common/physics_ticks_per_second=120
+2d/default_gravity=980.0
+2d/default_gravity_vector=Vector2(0, 1)

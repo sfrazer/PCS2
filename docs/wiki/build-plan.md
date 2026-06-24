@@ -211,7 +211,7 @@ func clear() -> void:
     elements.clear()
 ```
 
-**Tests:** `source/debug/tests/test_table_data.gd` covering: serialize → deserialize round-trip preserves elements; `serialize()` output contains `version` and `elements`; `to_export_dict()` has `canvas_width`/`canvas_height`/`elements` and no `version`; `add_element`/`remove_element`/`update_element`/`clear` mutate state correctly; `deserialize()` returns `false` on non-JSON input, on a JSON non-Dictionary, and on a Dictionary missing `version` or `elements`. Suite green via `scripts/run_tests.sh`.
+**Tests:** `source/debug/tests/test_table_data.gd` covering: serialize → deserialize round-trip preserves elements; `serialize()` output contains `version` and `elements`; `to_export_dict()` has `canvas_width`/`canvas_height`/`elements` and no `version`; `add_element`/`remove_element`/`update_element`/`clear` mutate state correctly; `deserialize()` returns `false` on non-JSON input, on a JSON non-Dictionary, on a Dictionary missing `version` or `elements`, and on an elements array containing any non-Dictionary entry (atomic validation — corrupt file never partially overwrites existing state). Suite green via `scripts/run_tests.sh`.
 
 **Verify:** Manually call `serialize()` on a populated instance and confirm the output is valid JSON matching the save file schema in `json-schema.md`. Call `deserialize()` on that string and confirm `elements` is restored.
 

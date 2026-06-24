@@ -144,13 +144,17 @@ func deserialize(json_string: String) -> bool:
         return false
     if not data["elements"] is Array:
         return false
-    # JSON.parse_string returns an untyped Array; it cannot be assigned to
-    # Array[Dictionary] directly. Iterate and append each entry explicitly.
-    elements.clear()
+    # Validate all entries before mutating state — clear only after full success
+    # so a corrupt file never wipes a pre-existing table.
+    var new_elements: Array[Dictionary] = []
     for entry: Variant in data["elements"] as Array:
-        if entry is Dictionary:
-            elements.append((entry as Dictionary).duplicate(true))
+        if not entry is Dictionary:
+            return false
+        new_elements.append((entry as Dictionary).duplicate(true))
+    elements = new_elements
     return true
 ```
+
+> Note: deserialize uses atomic validation — it returns `false` and leaves `elements` unchanged if **any** array entry is not a Dictionary. A corrupt file never partially overwrites an existing table.
 
 > GUT gotcha: the empty-string guard and the explicit iterate-and-append are required for tests to pass — see `testing.md` and `../Claude-Godot-Generic.md`.
