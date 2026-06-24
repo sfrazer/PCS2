@@ -1,3 +1,17 @@
-[gd_scene load_steps=1 format=3 uid="uid://pb1construct001"]
+[gd_scene load_steps=3 format=3 uid="uid://pb1construct001"]
+
+[sub_resource type="CircleShape2D" id="1_area01"]
+radius = 20.0
+
+[sub_resource type="PlaceholderTexture2D" id="2_phld1"]
+size = Vector2(40, 40)
 
 [node name="PopBumperConstruct" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("2_phld1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("1_area01")

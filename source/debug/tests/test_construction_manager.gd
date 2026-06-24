@@ -84,3 +84,49 @@ func test_rebuild_from_table_data_updates_table_data_reference() -> void:
 	_manager.rebuild_from_table_data(data)
 	assert_true(_manager.get_table_data() is TableData)
 	assert_eq(_manager.get_table_data().elements.size(), 1)
+
+
+func test_rebuild_from_table_data_instantiates_correct_types() -> void:
+	var data: TableData = TableData.new()
+	data.add_element("flipper_left", 100.0, 200.0, 0.0)
+	data.add_element("pop_bumper", 300.0, 200.0, 0.0)
+	_manager.rebuild_from_table_data(data)
+	var left_node: Node = _placed_elements.get_child(0)
+	var bumper_node: Node = _placed_elements.get_child(1)
+	var left_shape: CollisionShape2D = left_node.get_node("Area2D/CollisionShape2D") as CollisionShape2D
+	var bumper_shape: CollisionShape2D = bumper_node.get_node("Area2D/CollisionShape2D") as CollisionShape2D
+	assert_true(left_shape.shape is RectangleShape2D)
+	assert_true(bumper_shape.shape is CircleShape2D)
+
+
+func test_rotate_selected_updates_table_data() -> void:
+	var data: TableData = TableData.new()
+	data.add_element("flipper_left", 100.0, 200.0, 0.0)
+	_manager.rebuild_from_table_data(data)
+	_manager._selected_index = 0
+	_manager.rotate_selected(15.0)
+	assert_eq(_manager.get_table_data().elements[0]["rotation"], 15.0)
+
+
+func test_delete_element_adjusts_selected_index_down() -> void:
+	var data: TableData = TableData.new()
+	data.add_element("flipper_left", 100.0, 200.0, 0.0)
+	data.add_element("pop_bumper", 300.0, 200.0, 0.0)
+	_manager.rebuild_from_table_data(data)
+	_manager._selected_index = 1
+	_manager._delete_element(0)
+	assert_eq(_manager._selected_index, 0)
+	# queue_free is deferred; check the parallel arrays which update immediately
+	assert_eq(_manager._placed_nodes.size(), 1)
+	assert_eq(_manager.get_table_data().elements.size(), 1)
+
+
+func test_delete_element_clears_selected_when_deleting_selected() -> void:
+	var data: TableData = TableData.new()
+	data.add_element("flipper_left", 100.0, 200.0, 0.0)
+	data.add_element("pop_bumper", 300.0, 200.0, 0.0)
+	_manager.rebuild_from_table_data(data)
+	_manager._selected_index = 0
+	_manager._delete_element(0)
+	assert_eq(_manager._selected_index, -1)
+	assert_eq(_manager._placed_nodes.size(), 1)
