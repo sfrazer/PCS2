@@ -352,7 +352,7 @@ Create placeholder `.tscn` files for all 12 scene paths. Each placeholder is a s
 
 ## Task 5 — Construction Scene Layout
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Build the construction scene's visual structure and wire button signals to stub handlers.
 
@@ -390,7 +390,7 @@ In `construction_scene.gd`:
 
 ## Task 6 — ConstructionManager
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement all construction mode mouse interaction. At the end of this task, elements can be placed, moved, rotated, and deleted, and TableData stays in sync.
 
@@ -429,6 +429,8 @@ var _drag_offset: Vector2 = Vector2.ZERO
 **Rotation:** Mouse-wheel up/down over the canvas rotates the selected element by ±15° via `rotate_selected()`. (Rotation uses mouse input directly rather than an Input Map action, keeping the Input Map limited to play-mode controls.)
 
 **Verify:** Place one of each element type, drag two to new positions, rotate one with the mouse wheel, delete one, save and reload — confirm canvas restores exactly (positions and rotations).
+
+> **Note:** Select / drag / delete / rotate-on-selection require construct scenes to have an `Area2D` (per `element-specs.md`). Task 4 placeholders are bare `Node2D` roots with no children, so only placement can be exercised until Tasks 8–12 replace them with real construct scenes. Full Verify deferred to after Task 12.
 
 ---
 
