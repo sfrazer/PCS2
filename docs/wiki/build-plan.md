@@ -436,7 +436,7 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 ## Task 7 — Ball, Table Boundary & Physics Sandbox
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Create the ball, the playfield enclosure, and a debug sandbox so the element play-variants (Tasks 8–12) can be verified before the full play scene exists. Without a boundary the ball falls straight out of the world and no physics can be observed.
 
@@ -476,7 +476,7 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 ## Task 8 — Flipper Elements
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement all four flipper scenes (left/right × construct/play).
 

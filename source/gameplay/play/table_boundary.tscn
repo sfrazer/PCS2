@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="RectangleShape2D" id="1_left01"]
+size = Vector2(10, 440)
+
+[sub_resource type="RectangleShape2D" id="2_right0"]
+size = Vector2(10, 440)
+
+[sub_resource type="RectangleShape2D" id="3_top001"]
+size = Vector2(820, 10)
+
+[sub_resource type="RectangleShape2D" id="4_bot001"]
+size = Vector2(820, 10)
+
+[node name="TableBoundary" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 1
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 210)
+shape = SubResource("1_left01")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+position = Vector2(805, 210)
+shape = SubResource("2_right0")
+
+[node name="TopWall" type="CollisionShape2D" parent="."]
+position = Vector2(400, -5)
+shape = SubResource("3_top001")
+
+[node name="BottomWall" type="CollisionShape2D" parent="."]
+position = Vector2(400, 425)
+shape = SubResource("4_bot001")

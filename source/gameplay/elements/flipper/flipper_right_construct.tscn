@@ -1,3 +1,16 @@
-[gd_scene load_steps=1 format=3 uid="uid://fr1construct001"]
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="RectangleShape2D" id="1_rect01"]
+size = Vector2(80, 16)
 
 [node name="FlipperRightConstruct" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+flip_h = true
+offset = Vector2(40, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40, 0)
+shape = SubResource("1_rect01")

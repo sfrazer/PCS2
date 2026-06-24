@@ -1,3 +1,21 @@
-[gd_scene load_steps=1 format=3 uid="uid://fl1play000001"]
+[gd_scene load_steps=3 format=3]
 
-[node name="FlipperLeftPlay" type="Node2D"]
+[ext_resource type="Script" path="res://source/gameplay/elements/flipper/flipper_left_play.gd" id="1_flpl1"]
+
+[sub_resource type="CapsuleShape2D" id="1_caps1"]
+radius = 8.0
+height = 80.0
+
+[node name="FlipperLeft" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 1
+sync_to_physics = true
+script = ExtResource("1_flpl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40, 0)
+rotation = 1.5707964
+shape = SubResource("1_caps1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+offset = Vector2(40, 0)
