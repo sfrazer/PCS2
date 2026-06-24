@@ -12,7 +12,7 @@ size = Vector2(6, 60)
 script = ExtResource("1_lp001")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(-9, 0)
+position = Vector2(-15, 0)
 collision_layer = 2
 collision_mask = 1
 
@@ -20,7 +20,7 @@ collision_mask = 1
 shape = SubResource("1_lwall")
 
 [node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(9, 0)
+position = Vector2(15, 0)
 collision_layer = 2
 collision_mask = 1
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cu7kd88rvwcke"]
+
+[ext_resource type="Script" path="res://source/gameplay/play/play_scene.gd" id="1_ps001"]
+[ext_resource type="PackedScene" path="res://source/gameplay/play/table_boundary.tscn" id="2_tbnd1"]
+
+[node name="PlayScene" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_ps001")
+
+[node name="TableViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 560.0
+offset_bottom = 720.0
+
+[node name="TableViewport" type="SubViewport" parent="TableViewportContainer"]
+size = Vector2i(560, 720)
+
+[node name="TableBoundary" parent="TableViewportContainer/TableViewport" instance=ExtResource("2_tbnd1")]
+
+[node name="PhysicsElements" type="Node2D" parent="TableViewportContainer/TableViewport"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="BackButton" type="Button" parent="HUD"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 40.0
+text = "← Edit"
+
+[connection signal="pressed" from="HUD/BackButton" to="." method="_on_back_button_pressed"]

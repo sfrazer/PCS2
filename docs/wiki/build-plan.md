@@ -688,7 +688,7 @@ Node2D (root — static anchor parent)
 
 ## Task 13 — Play Scene
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement the play scene that consumes TableData and runs the physics simulation, using the ball and table boundary from Task 7.
 
