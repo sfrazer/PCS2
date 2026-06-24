@@ -104,6 +104,16 @@ func test_deserialize_rejects_missing_elements() -> void:
 	assert_false(data.deserialize('{"version": 1}'))
 
 
+func test_deserialize_rejects_mixed_type_elements_array() -> void:
+	var data: TableData = TableData.new()
+	data.add_element("flipper_left", 100.0, 380.0, 0.0)
+	var result: bool = data.deserialize(
+		'{"version":1,"elements":[1,{"type":"flipper_left","x":100.0,"y":380.0,"rotation":0.0}]}'
+	)
+	assert_false(result)
+	assert_eq(data.elements.size(), 1, "Original elements must be preserved on failed deserialize")
+
+
 func test_serialize_does_not_share_reference_with_elements() -> void:
 	var data: TableData = TableData.new()
 	data.add_element("flipper_left", 100.0, 380.0, 0.0)
