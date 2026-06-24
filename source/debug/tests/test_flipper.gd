@@ -115,6 +115,20 @@ func test_left_play_has_capsule_collision_shape() -> void:
 	assert_true(col.shape is CapsuleShape2D)
 
 
+func test_left_play_capsule_is_horizontal() -> void:
+	var packed: PackedScene = load("res://source/gameplay/elements/flipper/flipper_left_play.tscn")
+	var node: Node = add_child_autofree(packed.instantiate())
+	var col: CollisionShape2D = node.get_node("CollisionShape2D") as CollisionShape2D
+	assert_almost_eq(col.rotation, PI / 2.0, 0.0001)
+
+
+func test_right_play_capsule_is_horizontal() -> void:
+	var packed: PackedScene = load("res://source/gameplay/elements/flipper/flipper_right_play.tscn")
+	var node: Node = add_child_autofree(packed.instantiate())
+	var col: CollisionShape2D = node.get_node("CollisionShape2D") as CollisionShape2D
+	assert_almost_eq(col.rotation, PI / 2.0, 0.0001)
+
+
 func test_right_play_sprite_is_flipped() -> void:
 	var packed: PackedScene = load("res://source/gameplay/elements/flipper/flipper_right_play.tscn")
 	var node: Node = add_child_autofree(packed.instantiate())
