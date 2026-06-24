@@ -1,0 +1,9 @@
+# Godot generated cache
+.godot/
+
+# macOS
+.DS_Store
+
+# GUT runtime output (keep addons/gut/ tracked)
+.gut_editor_config.json
+.gut_editor_shortcuts.cfg
