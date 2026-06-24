@@ -1,0 +1,3 @@
+[gd_scene load_steps=1 format=3 uid="uid://la1construct001"]
+
+[node name="LauncherConstruct" type="Node2D"]

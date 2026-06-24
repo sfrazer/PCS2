@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://f6g7h8i9j0123"]
+
+[ext_resource type="Script" path="res://source/debug/debug_overlay.gd" id="1_debug0"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_debug0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 30.0
+text = "FPS: 0  v0.0.0"

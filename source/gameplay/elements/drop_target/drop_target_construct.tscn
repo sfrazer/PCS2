@@ -1,0 +1,3 @@
+[gd_scene load_steps=1 format=3 uid="uid://dt1construct001"]
+
+[node name="DropTargetConstruct" type="Node2D"]

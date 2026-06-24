@@ -1,0 +1,3 @@
+[gd_scene load_steps=1 format=3 uid="uid://fl1play000001"]
+
+[node name="FlipperLeftPlay" type="Node2D"]
