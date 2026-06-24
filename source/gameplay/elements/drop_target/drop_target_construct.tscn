@@ -1,3 +1,17 @@
-[gd_scene load_steps=1 format=3 uid="uid://dt1construct001"]
+[gd_scene load_steps=3 format=3 uid="uid://dt1construct001"]
+
+[sub_resource type="RectangleShape2D" id="1_area01"]
+size = Vector2(40, 12)
+
+[sub_resource type="PlaceholderTexture2D" id="2_phld1"]
+size = Vector2(40, 12)
 
 [node name="DropTargetConstruct" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("2_phld1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("1_area01")

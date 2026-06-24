@@ -1,3 +1,30 @@
-[gd_scene load_steps=1 format=3 uid="uid://pb1play0000001"]
+[gd_scene load_steps=5 format=3 uid="uid://pb1play0000001"]
 
-[node name="PopBumperPlay" type="Node2D"]
+[ext_resource type="Script" path="res://source/gameplay/elements/pop_bumper/pop_bumper_play.gd" id="1_pp001"]
+
+[sub_resource type="CircleShape2D" id="1_body"]
+radius = 20.0
+
+[sub_resource type="PlaceholderTexture2D" id="2_phld1"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="3_contact"]
+radius = 24.0
+
+[node name="PopBumperPlay" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_pp001")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1_body")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("2_phld1")
+
+[node name="ContactArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]
+shape = SubResource("3_contact")
+
+[connection signal="body_entered" from="ContactArea" to="." method="_on_contact_area_body_entered"]

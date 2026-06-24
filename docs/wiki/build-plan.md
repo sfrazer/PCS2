@@ -531,7 +531,7 @@ func _physics_process(delta: float) -> void:
 
 ## Task 9 — Launcher Element
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement launcher construct and play scenes.
 
@@ -576,7 +576,7 @@ func _fire() -> void:
 
 ## Task 10 — Pop Bumper Element
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement pop bumper construct and play scenes.
 
@@ -611,7 +611,7 @@ func _on_contact_area_body_entered(body: Node2D) -> void:
 
 ## Task 11 — Drop Target Element
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement drop target construct and play scenes.
 
@@ -649,7 +649,7 @@ func _on_contact_area_body_entered(body: Node2D) -> void:
 
 ## Task 12 — Spinner Element
 
-**Status:** TODO
+**Status:** DONE
 
 **Goal:** Implement spinner construct and play scenes.
 

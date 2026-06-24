@@ -1,3 +1,28 @@
-[gd_scene load_steps=1 format=3 uid="uid://sp1play0000001"]
+[gd_scene load_steps=3 format=3 uid="uid://sp1play0000001"]
+
+[sub_resource type="RectangleShape2D" id="1_body"]
+size = Vector2(8, 40)
+
+[sub_resource type="PlaceholderTexture2D" id="2_phld1"]
+size = Vector2(8, 40)
 
 [node name="SpinnerPlay" type="Node2D"]
+
+[node name="Anchor" type="StaticBody2D" parent="."]
+
+[node name="SpinnerBody" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 1
+gravity_scale = 0.0
+linear_damp = 10.0
+angular_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinnerBody"]
+shape = SubResource("1_body")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpinnerBody"]
+texture = SubResource("2_phld1")
+
+[node name="Joint" type="PinJoint2D" parent="."]
+node_a = NodePath("../Anchor")
+node_b = NodePath("../SpinnerBody")
