@@ -33,15 +33,15 @@ Each element subfolder contains two scenes: a construction variant (`*_construct
 Main (Node2D) — process mode: Always
 ├── ConstructionScene (Node2D) — process mode: Pausable    [construction_scene.gd]
 │   ├── ConstructionManager (Node)                          [construction_manager.gd]
-│   ├── TableViewportContainer (SubViewportContainer, 800×420)
-│   │   └── TableViewport (SubViewport, size 800×420, physics_object_picking: true)
+│   ├── TableViewportContainer (SubViewportContainer, 560×720)
+│   │   └── TableViewport (SubViewport, size 560×720, physics_object_picking: true)
 │   │       └── PlacedElements (Node2D)
 │   ├── Palette (PanelContainer) — left panel, one button per element type
 │   └── Toolbar (HBoxContainer) — top bar: Save, Load, Play, Export
 │
 └── PlayScene (Node2D) — process mode: Pausable             [play_scene.gd]
-    ├── TableViewportContainer (SubViewportContainer, 800×420)
-    │   └── TableViewport (SubViewport, size 800×420)
+    ├── TableViewportContainer (SubViewportContainer, 560×720)
+    │   └── TableViewport (SubViewport, size 560×720)
     │       ├── TableBoundary (instance of table_boundary.tscn)
     │       ├── PhysicsElements (Node2D)
     │       └── Ball (RigidBody2D — created at runtime)
@@ -204,8 +204,8 @@ See `json-schema.md` for full annotated schemas.
 **Export artifact** (portable, consumed by other games):
 ```json
 {
-  "canvas_width": 800,
-  "canvas_height": 420,
+  "canvas_width": 560,
+  "canvas_height": 720,
   "elements": [
     { "type": "flipper_left", "x": 120.0, "y": 380.0, "rotation": 0.0 }
   ]

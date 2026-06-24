@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 { "type": "flipper_right", "x": 680.0, "y": 380.0, "rotation": 0.0 }
 ```
 
-`rotation` is in degrees. `x`, `y` are the hinge position on the 800×420 canvas.
+`rotation` is in degrees. `x`, `y` are the hinge position on the 560×720 canvas.
 
 ---
 
@@ -228,8 +228,8 @@ The ball is not a table element and is not stored in TableData. It is created by
 - `Sprite2D` — circle sprite, use `offset` for alignment
 - Physics layer: `Ball` (layer 1). Mask: `Table Elements` (layer 2).
 - `continuous_cd = CCD_MODE_CAST_SHAPE` — the ball is small and fast; continuous collision detection prevents it tunnelling through thin walls, flippers, and the spinner.
-- Spawn position: above the launcher if one exists in TableData, otherwise `Vector2(760.0, 350.0)`.
+- Spawn position: above the launcher if one exists in TableData, otherwise `Vector2(530.0, 600.0)`.
 
 ## Table Boundary
 
-Not a table element and not stored in TableData. A `StaticBody2D` enclosure (`source/gameplay/play/table_boundary.tscn`) instantiated by the play scene with four `RectangleShape2D` walls just outside the 800×420 canvas. Without it the ball falls straight out of the world. MVP uses a closed bottom wall (no ball-loss handling yet); it becomes a drain sensor when scoring is added. Physics layer `Table Elements` (2), mask `Ball` (1).
+Not a table element and not stored in TableData. A `StaticBody2D` enclosure (`source/gameplay/play/table_boundary.tscn`) instantiated by the play scene with four `RectangleShape2D` walls just outside the 560×720 canvas. Without it the ball falls straight out of the world. MVP uses a closed bottom wall (no ball-loss handling yet); it becomes a drain sensor when scoring is added. Physics layer `Table Elements` (2), mask `Ball` (1).

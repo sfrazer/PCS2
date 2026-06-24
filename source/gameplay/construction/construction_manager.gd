@@ -153,5 +153,5 @@ func _get_element_at(pos: Vector2) -> int:
 func _to_viewport_pos(container_pos: Vector2) -> Vector2:
 	# gui_input gives positions in SubViewportContainer-local space; the SubViewport
 	# may be a different resolution. Explicit conversion keeps placement and picking in
-	# sync if either size ever changes (currently both are 800x420, ratio = 1:1).
+	# sync if either size ever changes (currently both are 560x720, ratio = 1:1).
 	return container_pos * (Vector2(_table_viewport.size) / Vector2(_table_area.size))

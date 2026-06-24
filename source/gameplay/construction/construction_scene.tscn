@@ -26,23 +26,27 @@ text = "Export"
 [node name="PlayButton" type="Button" parent="Toolbar"]
 text = "Play"
 
-[node name="Palette" type="VBoxContainer" parent="."]
-offset_top = 40.0
-offset_right = 120.0
-offset_bottom = 460.0
-
 [node name="TableArea" type="SubViewportContainer" parent="."]
-offset_left = 120.0
 offset_top = 40.0
-offset_right = 920.0
-offset_bottom = 460.0
+offset_right = 560.0
+offset_bottom = 760.0
 
 [node name="TableViewport" type="SubViewport" parent="TableArea"]
 handle_input_locally = false
-size = Vector2i(800, 420)
+size = Vector2i(560, 720)
 physics_object_picking = true
 
+[node name="TableBackground" type="ColorRect" parent="TableArea/TableViewport"]
+color = Color(0.08, 0.22, 0.08, 1)
+size = Vector2(560, 720)
+
 [node name="PlacedElements" type="Node2D" parent="TableArea/TableViewport"]
+
+[node name="Palette" type="VBoxContainer" parent="."]
+offset_left = 560.0
+offset_top = 40.0
+offset_right = 760.0
+offset_bottom = 760.0
 
 [connection signal="pressed" from="Toolbar/SaveButton" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Toolbar/LoadButton" to="." method="_on_load_pressed"]

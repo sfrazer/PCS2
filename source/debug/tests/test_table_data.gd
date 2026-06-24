@@ -35,8 +35,8 @@ func test_to_export_dict_has_required_keys() -> void:
 	assert_true(d.has("canvas_height"))
 	assert_true(d.has("elements"))
 	assert_false(d.has("version"))
-	assert_eq(d["canvas_width"], 800)
-	assert_eq(d["canvas_height"], 420)
+	assert_eq(d["canvas_width"], 560)
+	assert_eq(d["canvas_height"], 720)
 	assert_eq(d["elements"].size(), 1)
 
 

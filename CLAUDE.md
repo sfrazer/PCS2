@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-A Godot 4.7 / GDScript remake of the 1983 Bill Budge Pinball Construction Set. Players design a pinball table on an 800×420 canvas using five element types (flipper L/R, launcher, pop bumper, drop target, spinner), then switch to a physics-driven play mode.
+A Godot 4.7 / GDScript remake of the 1983 Bill Budge Pinball Construction Set. Players design a pinball table on a 560×720 canvas using five element types (flipper L/R, launcher, pop bumper, drop target, spinner), then switch to a physics-driven play mode.
 
 The Godot project has not been created yet. All implementation work is driven by the build plan.
 

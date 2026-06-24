@@ -69,8 +69,8 @@ func test_export_artifact_matches_export_schema() -> void:
 	assert_true(d.has("canvas_height"))
 	assert_true(d.has("elements"))
 	assert_false(d.has("version"))
-	assert_eq(d["canvas_width"], 800.0)
-	assert_eq(d["canvas_height"], 420.0)
+	assert_eq(d["canvas_width"], 560.0)
+	assert_eq(d["canvas_height"], 720.0)
 	assert_eq((d["elements"] as Array).size(), 1)
 
 	_cleanup(path)

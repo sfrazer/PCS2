@@ -4,7 +4,7 @@ All items are MVP scope. Listed in priority order.
 
 | # | As a player, I want to… | So that… |
 |---|---|---|
-| 1 | Open the application and see an 800×420 construction canvas with a palette | I can start designing immediately |
+| 1 | Open the application and see a 560×720 construction canvas with a palette | I can start designing immediately |
 | 2 | Select a table element from the palette (flipper L/R, launcher, pop bumper, drop target, spinner) | I can choose what to place |
 | 3 | Click the canvas to place the selected element | I can build the table layout |
 | 4 | Click and drag a placed element to reposition it | I can adjust the layout |
