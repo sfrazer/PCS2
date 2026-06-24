@@ -38,8 +38,8 @@ func deserialize(json_string: String) -> bool:
 
 func to_export_dict() -> Dictionary:
 	return {
-		"canvas_width": 800,
-		"canvas_height": 420,
+		"canvas_width": 560,
+		"canvas_height": 720,
 		"elements": elements.duplicate(true),
 	}
 

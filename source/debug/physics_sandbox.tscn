@@ -8,13 +8,17 @@
 script = ExtResource("1_sand1")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_right = 800.0
-offset_bottom = 420.0
+offset_right = 560.0
+offset_bottom = 720.0
 
 [node name="SandboxViewport" type="SubViewport" parent="SubViewportContainer"]
-size = Vector2i(800, 420)
+size = Vector2i(560, 720)
+
+[node name="Background" type="ColorRect" parent="SubViewportContainer/SandboxViewport"]
+color = Color(0.08, 0.22, 0.08, 1)
+size = Vector2(560, 720)
 
 [node name="TableBoundary" parent="SubViewportContainer/SandboxViewport" instance=ExtResource("2_bndry")]
 
 [node name="Ball" parent="SubViewportContainer/SandboxViewport" instance=ExtResource("3_ball1")]
-position = Vector2(400, 50)
+position = Vector2(280, 50)

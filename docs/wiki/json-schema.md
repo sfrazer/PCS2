@@ -59,8 +59,8 @@ Written and read by `SaveLoadManager`. Used for the edit cycle only.
 | `version` | integer | Format version. Currently `1`. Increment when the format changes. |
 | `elements` | array | Ordered list of placed elements. |
 | `elements[].type` | string | One of: `flipper_left`, `flipper_right`, `launcher`, `pop_bumper`, `drop_target`, `spinner` |
-| `elements[].x` | float | X position in canvas coordinates (0–800, origin top-left) |
-| `elements[].y` | float | Y position in canvas coordinates (0–420, origin top-left) |
+| `elements[].x` | float | X position in canvas coordinates (0–560, origin top-left) |
+| `elements[].y` | float | Y position in canvas coordinates (0–720, origin top-left) |
 | `elements[].rotation` | float | Rotation in degrees. Clockwise positive. |
 
 ### Versioning
@@ -75,8 +75,8 @@ Written by `SaveLoadManager.export_artifact()`. Intended for consumption by an e
 
 ```json
 {
-  "canvas_width": 800,
-  "canvas_height": 420,
+  "canvas_width": 560,
+  "canvas_height": 720,
   "elements": [
     {
       "type": "flipper_left",
@@ -92,8 +92,8 @@ Written by `SaveLoadManager.export_artifact()`. Intended for consumption by an e
 
 | Field | Type | Notes |
 |---|---|---|
-| `canvas_width` | integer | Always `800`. Allows the importing game to scale or position the table. |
-| `canvas_height` | integer | Always `420`. |
+| `canvas_width` | integer | Always `560`. Allows the importing game to scale or position the table. |
+| `canvas_height` | integer | Always `720`. |
 | `elements` | array | Same structure as the save file element array. |
 | `elements[].type` | string | Same type strings as save file. The importing game must recognise these strings. |
 | `elements[].x` | float | Same coordinate space as save file. |
@@ -102,7 +102,7 @@ Written by `SaveLoadManager.export_artifact()`. Intended for consumption by an e
 
 ### Notes for the importing game
 
-- `x` and `y` are in the PCS canvas coordinate space (800×420, origin top-left).
+- `x` and `y` are in the PCS canvas coordinate space (560×720, origin top-left).
 - The importing game is responsible for scaling these coordinates to its own coordinate space using `canvas_width` and `canvas_height`.
 - Element types are stable strings. Do not rely on ordering or index.
 - Additional fields may be added in future versions. The importing game should ignore unknown fields.
@@ -125,8 +125,8 @@ func serialize() -> String:
 ```gdscript
 func to_export_dict() -> Dictionary:
     return {
-        "canvas_width": 800,
-        "canvas_height": 420,
+        "canvas_width": 560,
+        "canvas_height": 720,
         "elements": elements.duplicate(true),
     }
 ```

@@ -9,13 +9,13 @@ Desktop only. Godot 4.7 exports Windows, macOS, and Linux from a single project 
 Apply all of these before writing gameplay code.
 
 ### Resolution & Display
-- **Viewport size:** 1280×768. This accommodates the 800×420 table canvas plus palette and toolbar chrome.
+- **Viewport size:** 800×800. This accommodates the 560×720 table canvas plus palette and toolbar chrome.
 - **Stretch mode:** `canvas_items`
 - **Stretch aspect:** `keep`
-- **Stretch scale mode:** `fractional` (not `integer` — the 800×420 canvas does not cleanly divide into standard desktop resolutions)
-- **Minimum window size:** 1024×640
-- **Dev window override:** 1280×768 (set in Editor → Editor Settings, not project settings)
-- **Note:** The 800×420 table canvas lives inside a `SubViewport` — it is isolated from the window stretch settings. Window settings govern the surrounding UI shell only.
+- **Stretch scale mode:** `fractional` (not `integer` — the 560×720 canvas does not cleanly divide into standard desktop resolutions)
+- **Minimum window size:** 760×760
+- **Dev window override:** 800×800 (set in Editor → Editor Settings, not project settings)
+- **Note:** The 560×720 table canvas lives inside a `SubViewport` — it is isolated from the window stretch settings. Window settings govern the surrounding UI shell only.
 
 ### Physics
 - **Physics ticks per second:** 120 (Project Settings → Physics → Common → Physics Ticks Per Second)

@@ -47,10 +47,10 @@ Per task:
    ```
 
 3. Apply Project Settings:
-   - **Display → Window → Size → Viewport Width:** 1280
-   - **Display → Window → Size → Viewport Height:** 768
-   - **Display → Window → Size → Minimum Width:** 1024
-   - **Display → Window → Size → Minimum Height:** 640
+   - **Display → Window → Size → Viewport Width:** 800
+   - **Display → Window → Size → Viewport Height:** 800
+   - **Display → Window → Size → Minimum Width:** 760
+   - **Display → Window → Size → Minimum Height:** 760
    - **Display → Window → Stretch → Mode:** `canvas_items`
    - **Display → Window → Stretch → Aspect:** `keep`
    - **Display → Window → Stretch → Scale Mode:** `fractional`
@@ -191,8 +191,8 @@ func deserialize(json_string: String) -> bool:
 
 func to_export_dict() -> Dictionary:
     return {
-        "canvas_width": 800,
-        "canvas_height": 420,
+        "canvas_width": 560,
+        "canvas_height": 720,
         "elements": elements.duplicate(true),
     }
 
@@ -367,10 +367,10 @@ ConstructionScene (Node2D) — process mode: Pausable  [construction_scene.gd]
 │   ├── LoadButton (Button, text: "Load")
 │   ├── ExportButton (Button, text: "Export")
 │   └── PlayButton (Button, text: "Play")
-├── Palette (VBoxContainer) — anchored left, below toolbar
+├── Palette (VBoxContainer) — anchored right, below toolbar
 │   └── (populated at runtime from ElementRegistry)
-└── TableArea (SubViewportContainer) — fills remaining space, size 800×420
-    └── TableViewport (SubViewport, size 800×420, handle_input_locally: false,
+└── TableArea (SubViewportContainer) — fills remaining space, size 560×720
+    └── TableViewport (SubViewport, size 560×720, handle_input_locally: false,
                        physics_object_picking: true)
         └── PlacedElements (Node2D)
 ```
@@ -461,11 +461,11 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 **Table Boundary** (`table_boundary.tscn`):
 - Root: `StaticBody2D`, physics layer `Table Elements` (2), mask `Ball` (1)
-- Four `CollisionShape2D` children (`RectangleShape2D`) forming left, right, top, and bottom walls just outside the 0–800 × 0–420 canvas rectangle.
+- Four `CollisionShape2D` children (`RectangleShape2D`) forming left, right, top, and bottom walls just outside the 0–560 × 0–720 canvas rectangle.
 - **MVP uses a closed bottom wall** so the ball stays in play during testing. There is no ball-loss/respawn handling at MVP, so an open drain would simply lose the ball with no recovery. When scoring/ball-loss is added later, the bottom wall is replaced with a drain sensor.
 
 **Physics Sandbox** (`physics_sandbox.tscn`, in `source/debug/`):
-- A `SubViewportContainer` + `SubViewport` (800×420) containing an instance of `table_boundary`, an instance of `ball`, and room to drop element play scenes by hand.
+- A `SubViewportContainer` + `SubViewport` (560×720) containing an instance of `table_boundary`, an instance of `ball`, and room to drop element play scenes by hand.
 - Used as a scratch harness for Tasks 8–12. Lives in `source/debug/` and is excluded from export.
 
 **Tests:** `source/debug/tests/test_ball_boundary.gd` — smoke tests: `ball.tscn` instantiates without error, is a `RigidBody2D`, joins group `"ball"` on `_ready`, and has its `Ball`/`Table Elements` layer/mask configured; `table_boundary.tscn` instantiates without error as a `StaticBody2D` with four collision shapes. Ball-containment behaviour is the manual Verify below, not a unit test. Suite green via `scripts/run_tests.sh`.
@@ -697,8 +697,8 @@ Node2D (root — static anchor parent)
 **Scene structure:**
 ```
 PlayScene (Node2D) — process mode: Pausable        [play_scene.gd]
-├── TableViewportContainer (SubViewportContainer, 800×420)
-│   └── TableViewport (SubViewport, 800×420)
+├── TableViewportContainer (SubViewportContainer, 560×720)
+│   └── TableViewport (SubViewport, 560×720)
 │       ├── TableBoundary (instance of table_boundary.tscn)
 │       ├── PhysicsElements (Node2D)
 │       └── Ball (RigidBody2D — created at runtime)
@@ -740,7 +740,7 @@ func _find_spawn_position() -> Vector2:
     for entry: Dictionary in table_data.elements:
         if entry["type"] == "launcher":
             return Vector2(entry["x"], entry["y"] - 40.0)
-    return Vector2(760.0, 350.0)
+    return Vector2(530.0, 600.0)
 
 func _on_back_button_pressed() -> void:
     back_requested.emit()
