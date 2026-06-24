@@ -1,6 +1,8 @@
 class_name ConstructionManager
 extends Node
 
+# Degrees rotated per mouse-wheel click.
+const ROTATE_STEP: float = 15.0
 
 var _table_data: TableData = TableData.new()
 var _selected_type: String = ""
@@ -16,6 +18,10 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	# Using gui_input + manual intersect_point rather than physics_object_picking's
+	# _input_event signal — the latter fires per-body and makes unified click/drag/delete
+	# dispatch significantly harder. physics_object_picking=true is kept on the SubViewport
+	# per the build spec but is not the mechanism we rely on here.
 	_table_area.gui_input.connect(_on_canvas_input)
 
 
@@ -62,7 +68,7 @@ func _on_canvas_input(event: InputEvent) -> void:
 
 
 func _handle_mouse_button(event: InputEventMouseButton) -> void:
-	var pos: Vector2 = event.position
+	var pos: Vector2 = _to_viewport_pos(event.position)
 
 	if event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -85,16 +91,16 @@ func _handle_mouse_button(event: InputEventMouseButton) -> void:
 			_delete_element(hit)
 
 	elif event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-		rotate_selected(15.0)
+		rotate_selected(ROTATE_STEP)
 
 	elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-		rotate_selected(-15.0)
+		rotate_selected(-ROTATE_STEP)
 
 
 func _handle_mouse_motion(event: InputEventMouseMotion) -> void:
 	if _drag_node == null:
 		return
-	var new_pos: Vector2 = event.position + _drag_offset
+	var new_pos: Vector2 = _to_viewport_pos(event.position) + _drag_offset
 	_drag_node.position = new_pos
 	_table_data.update_element(_drag_index,
 			new_pos.x, new_pos.y, _drag_node.rotation_degrees)
@@ -135,9 +141,17 @@ func _get_element_at(pos: Vector2) -> int:
 	for result: Dictionary in results:
 		var collider: Object = result["collider"]
 		if collider is Area2D:
+			# element-specs.md defines construct scenes as Node2D → Area2D (direct child).
 			var parent: Node2D = (collider as Node).get_parent() as Node2D
 			if parent != null:
 				var idx: int = _placed_nodes.find(parent)
 				if idx >= 0:
 					return idx
 	return -1
+
+
+func _to_viewport_pos(container_pos: Vector2) -> Vector2:
+	# gui_input gives positions in SubViewportContainer-local space; the SubViewport
+	# may be a different resolution. Explicit conversion keeps placement and picking in
+	# sync if either size ever changes (currently both are 800x420, ratio = 1:1).
+	return container_pos * (Vector2(_table_viewport.size) / Vector2(_table_area.size))

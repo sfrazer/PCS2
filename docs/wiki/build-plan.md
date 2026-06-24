@@ -430,6 +430,8 @@ var _drag_offset: Vector2 = Vector2.ZERO
 
 **Verify:** Place one of each element type, drag two to new positions, rotate one with the mouse wheel, delete one, save and reload — confirm canvas restores exactly (positions and rotations).
 
+> **Note:** Select / drag / delete / rotate-on-selection require construct scenes to have an `Area2D` (per `element-specs.md`). Task 4 placeholders are bare `Node2D` roots with no children, so only placement can be exercised until Tasks 8–12 replace them with real construct scenes. Full Verify deferred to after Task 12.
+
 ---
 
 ## Task 7 — Ball, Table Boundary & Physics Sandbox
